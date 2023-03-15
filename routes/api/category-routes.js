@@ -3,6 +3,7 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
+// this route finds all categories and shows their associated products
 router.get('/', async (req, res) => {
   try {
     const categoryData = await Category.findAll({
@@ -12,10 +13,9 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-  // find all categories
-  // be sure to include its associated Products
 });
 
+// this route finds a category by specific ID and shows associated products
 router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
@@ -29,10 +29,9 @@ router.get('/:id', async (req, res) => {
   } catch (err){
     res.status(500).json(err);
   }
-  // find one category by its `id` value
-  // be sure to include its associated Products
 });
 
+// this route allows for creation of a new category (empty of products/tags)
 router.post('/', async (req, res) => {
   try {
     const categoryData = await Category.create(req.body);
@@ -40,9 +39,9 @@ router.post('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
-  // create a new category
 });
 
+// this route allows an existing catgory to be updated with a new name
 router.put('/:id', async (req, res) => {
   try {
     const categoryData = await Category.update(
@@ -61,11 +60,15 @@ router.put('/:id', async (req, res) => {
   } catch(err) {
     res.status(500).json(err);
   }
-  // update a category by its `id` value
 });
 
+// this route deletes a category by its ID and also cascades to delete products with that category ID
 router.delete('/:id', async (req, res) => {
   try {
+    const productData = await Product.destroy({
+      where: {
+        category_id: req.params.id,
+      }})
     const categoryData = await Category.destroy({
       where: {
         id: req.params.id,
@@ -79,7 +82,6 @@ router.delete('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-  // delete a category by its `id` value
 });
 
 module.exports = router;
