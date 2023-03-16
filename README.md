@@ -1,6 +1,5 @@
 # 13 Object-Relational Mapping (ORM): E-Commerce Back End
-
-This is project to build the back-end of an ecommerce site. 
+By Mariah Wear for UC Berkeley EdX Bootcamp.
 
 ## Table of contents
 
@@ -70,7 +69,7 @@ Project tested in Insomnia![](./assets/screenshot-insomnia.png)
 ### Links
 
 - Solution URL: [Github Repository](https://github.com/mariahw4/13-e-commerce-back-end)
-- Walkthrough Video Link: [Google Drive Video Link](https://your-live-site-url.com)
+- Walkthrough Video Link: [Google Drive Video Link](https://drive.google.com/file/d/1BqaTCfzDzabO06NhRPL5VBlnUStdttvr/view)
 
 ## My process
 
